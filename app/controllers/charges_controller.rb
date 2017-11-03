@@ -4,19 +4,23 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Amount in cents
-    @amount = 500
+
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+    current_user.stripe_id = customer.id
+    current_user.save()
+
+    Stripe::Subscription.create(
+      :customer => current_user.stripe_id,
+      :items => [
+        {
+          :plan => "playd_subscription",
+        },
+      ],
     )
 
   rescue Stripe::CardError => e
