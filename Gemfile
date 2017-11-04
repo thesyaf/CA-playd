@@ -5,9 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# User accounts
 gem 'devise'
+# Image Uploader
 gem "shrine"
+# Payment system
 gem 'stripe'
+# Internet Game Database API
+gem 'igdb_api'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
