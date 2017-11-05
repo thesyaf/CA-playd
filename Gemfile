@@ -14,6 +14,9 @@ gem 'stripe'
 # Securing information
 gem 'figaro'
 
+gem 'giantbomb-api', '~> 1.6.0'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record

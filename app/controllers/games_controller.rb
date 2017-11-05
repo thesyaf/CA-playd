@@ -5,6 +5,17 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
+
+    search = GiantBomb::Search.new
+
+    search.offset(3)
+    search.limit(2) # max 100
+    search.resources('game')
+    search.query('battlefield')
+    search.fields('platforms,name')
+
+    puts search.fetch # excute query
+
   end
 
   # GET /games/1
@@ -69,6 +80,11 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:api_game_id, :name, :image, :platform)
+      params.require(:game).permit(
+        :api_game_id,
+        :name,
+        :image,
+        :platform
+      )
     end
 end
