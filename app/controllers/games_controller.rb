@@ -6,15 +6,22 @@ class GamesController < ApplicationController
   def index
     @games = Game.all
 
-    search = GiantBomb::Search.new
+    if params[:search]
+      @games = Game.search(params[:search]).order("created_at DESC")
+      search = GiantBomb::Search.new
 
-    search.offset(3)
-    search.limit(2) # max 100
-    search.resources('game')
-    search.query('battlefield')
-    search.fields('platforms,name')
+      search.offset(3)
+      search.limit(2) # max 100
+      search.resources('game')
+      search.query(params[:search])
+      search.fields('platforms,name')
 
-    puts search.fetch # excute query
+      puts search.fetch # excute query
+    else
+      @games = Game.all.order("created_at DESC")
+    end
+
+
 
   end
 

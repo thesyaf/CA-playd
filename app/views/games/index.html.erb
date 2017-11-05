@@ -2,6 +2,14 @@
 
 <h1>Games</h1>
 
+<%= form_tag(games_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% if @games.blank? %>
+  <h4>There are no games containing the term <%= params[:search] %>.</h4>
+<% end %>
 
 <table>
   <thead>
