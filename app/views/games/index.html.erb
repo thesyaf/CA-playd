@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Games</h1>
+
+<%= form_tag(games_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<%= @search_result.each do |result| %>
+  <div class="col-6 col-sm-4">
+    <div class="card items_card">
+      <div class="card-body">
+          <%= image_tag(result["image"]) %>
+        <div class="text_box">
+          <p class="card-text"><span class="item_name"><%= result["name"] %></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @search.blank? %>
+  <h4>There are no games containing the term <%= params[:search] %>.</h4>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Api game</th>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Platform</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.api_game_id %></td>
+        <td><%= game.name %></td>
+        <td><%= game.image %></td>
+        <td><%= game.platform %></td>
+        <td><%= link_to 'Show', game %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

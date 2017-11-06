@@ -5,9 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# User accounts
 gem 'devise'
+# Image Uploader
 gem "shrine"
+# Payment system
 gem 'stripe'
+# Securing information
+gem 'figaro'
+
+gem 'giantbomb-api', '~> 1.6.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

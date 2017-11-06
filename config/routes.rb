@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :games, only: :index
   devise_for :users, controllers: { registrations: "registrations" }
-  
+
   resources :charges
 
   root 'home#index'
