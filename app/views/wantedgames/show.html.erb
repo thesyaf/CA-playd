@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game api:</strong>
+  <%= @wantedgame.game_api_id %>
+</p>
+
+<p>
+  <strong>Game name:</strong>
+  <%= @wantedgame.game_name %>
+</p>
+
+<p>
+  <strong>Game image:</strong>
+  <%= @wantedgame.game_image %>
+</p>
+
+<p>
+  <strong>Game owned:</strong>
+  <%= @wantedgame.game_owned %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @wantedgame.user %>
+</p>
+
+<%= link_to 'Edit', edit_wantedgame_path(@wantedgame) %> |
+<%= link_to 'Back', wantedgames_path %>

@@ -1,0 +1,2 @@
+module WantedgamesHelper
+end

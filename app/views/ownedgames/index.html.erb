@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ownedgames</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game api</th>
+      <th>Game name</th>
+      <th>Game image</th>
+      <th>Game owned</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ownedgames.each do |ownedgame| %>
+      <tr>
+        <td><%= ownedgame.game_api_id %></td>
+        <td><%= ownedgame.game_name %></td>
+        <td><%= ownedgame.game_image %></td>
+        <td><%= ownedgame.game_owned %></td>
+        <td><%= link_to 'Show', ownedgame %></td>
+        <td><%= link_to 'Edit', edit_ownedgame_path(ownedgame) %></td>
+        <td><%= link_to 'Destroy', ownedgame, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ownedgame', new_ownedgame_path %>
