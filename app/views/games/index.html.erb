@@ -17,7 +17,9 @@
         <div class="card-body">
             <%= image_tag(result["image"]) %>
           <div class="text_box">
-            <p class="card-text"><span class="item_name"><%= result["name"] %></span></p>
+            <p class="card-text"><span class="item_name"><%= result["id"] %><%= result["name"] %></span></p>
+            <%= link_to "Add Game", new_game_path(id: result["id"], name: result["name"], image: result["image"]) %>
+
           </div>
         </div>
       </div>
