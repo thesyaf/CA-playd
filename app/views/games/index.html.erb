@@ -7,21 +7,22 @@
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<%= @search_result.each do |result| %>
-  <div class="col-6 col-sm-4">
-    <div class="card items_card">
-      <div class="card-body">
-          <%= image_tag(result["image"]) %>
-        <div class="text_box">
-          <p class="card-text"><span class="item_name"><%= result["name"] %></span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
 
 <% if @search.blank? %>
   <h4>There are no games containing the term <%= params[:search] %>.</h4>
+<% else %>
+  <%= @search_result.each do |result| %>
+    <div class="col-6 col-sm-4">
+      <div class="card items_card">
+        <div class="card-body">
+            <%= image_tag(result["image"]) %>
+          <div class="text_box">
+            <p class="card-text"><span class="item_name"><%= result["name"] %></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <table>
