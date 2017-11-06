@@ -7,16 +7,18 @@ class GamesController < ApplicationController
     @games = Game.all
 
     if params[:search]
-      @games = Game.search(params[:search]).order("created_at DESC")
-      search = GiantBomb::Search.new
+      @search = GiantBomb::Search.new
 
-      search.offset(3)
-      search.limit(2) # max 100
-      search.resources('game')
-      search.query(params[:search])
-      search.fields('platforms,name')
+      @search.limit(3) # max 100
+      @search.resources('game')
+      @search.query(params[:search])
+      @search.fields('name,image')
 
-      puts search.fetch # excute query
+      @search_result = []
+
+      @search.fetch.each do |result|
+        @search_result << {"name" => result["name"], "image" => result["image"]["small_url"]}
+      end
     else
       @games = Game.all.order("created_at DESC")
     end
