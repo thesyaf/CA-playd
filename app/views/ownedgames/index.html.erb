@@ -2,6 +2,35 @@
 
 <h1>Ownedgames</h1>
 
+
+
+
+
+
+<% if @ownedgames.blank? %>
+  <h4>You haven't added any games to your Owned Collection.</h4>
+<% else %>
+  <%= @ownedgames.each do |game| %>
+    <% if game.user == current_user %>
+      <div class="col-6 col-sm-4">
+        <div class="card items_card">
+          <div class="card-body">
+              <%= image_tag(game["game_image"]) %>
+            <div class="text_box">
+              <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+
+
+
+
 <table>
   <thead>
     <tr>
@@ -19,7 +48,7 @@
         <td><%= ownedgame.game_api_id %></td>
         <td><%= ownedgame.game_name %></td>
         <td><%= ownedgame.game_image %></td>
-        <td><%= ownedgame.game_owned %></td>
+        <td><%= ownedgame.user %></td>
         <td><%= link_to 'Show', ownedgame %></td>
         <td><%= link_to 'Edit', edit_ownedgame_path(ownedgame) %></td>
         <td><%= link_to 'Destroy', ownedgame, method: :delete, data: { confirm: 'Are you sure?' } %></td>

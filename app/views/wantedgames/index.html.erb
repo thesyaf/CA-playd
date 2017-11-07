@@ -2,13 +2,43 @@
 
 <h1>Wantedgames</h1>
 
+
+
+
+
+<% if @wantedgames.blank? %>
+  <h4>You haven't added any games to your Wanted Collection.</h4>
+<% else %>
+  <%= @wantedgames.each do |game| %>
+    <% if game.user == current_user %>
+
+      <div class="col-6 col-sm-4">
+        <div class="card items_card">
+          <div class="card-body">
+              <%= image_tag(game["game_image"]) %>
+            <div class="text_box">
+              <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
 <table>
   <thead>
     <tr>
       <th>Game api</th>
       <th>Game name</th>
       <th>Game image</th>
-      <th>Game owned</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +50,6 @@
         <td><%= wantedgame.game_api_id %></td>
         <td><%= wantedgame.game_name %></td>
         <td><%= wantedgame.game_image %></td>
-        <td><%= wantedgame.game_owned %></td>
         <td><%= wantedgame.user %></td>
         <td><%= link_to 'Show', wantedgame %></td>
         <td><%= link_to 'Edit', edit_wantedgame_path(wantedgame) %></td>

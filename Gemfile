@@ -9,11 +9,14 @@ end
 gem 'devise'
 # Image Uploader
 gem "shrine"
+# Image hoster
+gem "shrine-cloudinary"
+
 # Payment system
 gem 'stripe'
 # Securing information
 gem 'figaro'
-
+# Game database api
 gem 'giantbomb-api', '~> 1.6.0'
 
 
