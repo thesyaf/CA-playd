@@ -29,11 +29,9 @@ class OwnedgamesController < ApplicationController
 
     respond_to do |format|
       if @ownedgame.save
-        format.html { redirect_to @ownedgame, notice: 'Ownedgame was successfully created.' }
-        format.json { render :show, status: :created, location: @ownedgame }
+        format.html { redirect_to games_path, notice: 'Ownedgame was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @ownedgame.errors, status: :unprocessable_entity }
+        format.html { redirect_to games_path, notice: "Errors creating Ownedgame created: #{@ownedgame.errors}" }
       end
     end
   end

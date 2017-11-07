@@ -18,8 +18,8 @@
             <%= image_tag(result["image"]) %>
           <div class="text_box">
             <p class="card-text"><span class="item_name"><%= result["id"] %><%= result["name"] %></span></p>
-            <%= link_to "I own this", new_ownedgame_path(id: result["id"], name: result["name"], image: result["image"]) %>
-            <%= link_to "I want this", new_wantedgame_path(id: result["id"], name: result["name"], image: result["image"]) %>
+            <%= link_to "I own this", ownedgames_path({ownedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
+            <%= link_to "I want this",  wantedgames_path({wantedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
 
           </div>
         </div>
@@ -27,31 +27,3 @@
     </div>
   <% end %>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Api game</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Platform</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @games.each do |game| %>
-      <tr>
-        <td><%= game.api_game_id %></td>
-        <td><%= game.name %></td>
-        <td><%= game.image %></td>
-        <td><%= game.platform %></td>
-        <td><%= link_to 'Show', game %></td>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>

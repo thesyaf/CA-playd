@@ -19,6 +19,7 @@ class GamesController < ApplicationController
       @search.fetch.each do |result|
         @search_result << {"id" => result["id"], "name" => result["name"], "image" => result["image"]["small_url"]}
       end
+      puts "@search_result: #{@search_result.inspect}"
     else
       @games = Game.all.order("created_at DESC")
     end
