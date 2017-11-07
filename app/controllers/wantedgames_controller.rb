@@ -1,6 +1,7 @@
 class WantedgamesController < ApplicationController
   before_action :set_wantedgame, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /wantedgames
   # GET /wantedgames.json
   def index

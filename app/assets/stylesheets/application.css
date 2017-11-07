@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   margin: 0;
+   padding: 0;
+ }
+
+ a:hover {
+  background-color: #fff !important;
+ }
+
+ .game_card_image {
+   width: 95%;
+   margin-top: 5px;
+   border-radius: 3px;
+   display: block;
+ }

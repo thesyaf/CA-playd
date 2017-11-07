@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /games
   # GET /games.json
@@ -9,7 +10,7 @@ class GamesController < ApplicationController
     if params[:search]
       @search = GiantBomb::Search.new
 
-      @search.limit(3) # max 100
+      @search.limit(30) # max 100
       @search.resources('game')
       @search.query(params[:search])
       @search.fields("id,name,image")

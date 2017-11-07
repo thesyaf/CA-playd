@@ -1,6 +1,7 @@
 class OwnedgamesController < ApplicationController
   before_action :set_ownedgame, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /ownedgames
   # GET /ownedgames.json
   def index
