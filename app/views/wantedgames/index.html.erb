@@ -5,31 +5,29 @@
 
 
 
+<div class="container mx-auto user_photo_feed">
+    <div class="row justify-content-start">
+      <% if @wantedgames.blank? %>
+        <h4>You haven't added any games to your Wanted Collection.</h4>
+      <% else %>
+        <% @wantedgames.each do |game| %>
+          <% if game.user == current_user %>
 
-<% if @wantedgames.blank? %>
-  <h4>You haven't added any games to your Wanted Collection.</h4>
-<% else %>
-  <%= @wantedgames.each do |game| %>
-    <% if game.user == current_user %>
-
-      <div class="col-6 col-sm-4">
-        <div class="card items_card">
-          <div class="card-body">
-              <%= image_tag(game["game_image"]) %>
-            <div class="text_box">
-              <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+            <div class="col-6 col-sm-4">
+              <div class="card items_card">
+                <div class="card-body">
+                    <%= image_tag(game["game_image"], class: "game_card_image") %>
+                  <div class="text_box">
+                    <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       <% end %>
-
-    </div>
-  <% end %>
-<% end %>
-
-
-
-
+  </div>
+</div>
 
 
 
@@ -60,5 +58,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Wantedgame', new_wantedgame_path %>

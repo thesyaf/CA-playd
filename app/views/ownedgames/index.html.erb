@@ -6,27 +6,28 @@
 
 
 
-
-<% if @ownedgames.blank? %>
-  <h4>You haven't added any games to your Owned Collection.</h4>
-<% else %>
-  <%= @ownedgames.each do |game| %>
-    <% if game.user == current_user %>
-      <div class="col-6 col-sm-4">
-        <div class="card items_card">
-          <div class="card-body">
-              <%= image_tag(game["game_image"]) %>
-            <div class="text_box">
-              <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+<div class="container mx-auto user_photo_feed">
+    <div class="row justify-content-start">
+      <% if @ownedgames.blank? %>
+        <h4>You haven't added any games to your Owned Collection.</h4>
+      <% else %>
+        <% @ownedgames.each do |game| %>
+          <% if game.user == current_user %>
+            <div class="col-6 col-sm-4">
+              <div class="card items_card">
+                <div class="card-body">
+                    <%= image_tag(game["game_image"], class: "game_card_image") %>
+                  <div class="text_box">
+                    <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-  <% end %>
-<% end %>
-
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+</div>
 
 
 
@@ -58,5 +59,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Ownedgame', new_ownedgame_path %>

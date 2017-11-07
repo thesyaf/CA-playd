@@ -7,23 +7,26 @@
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
+<div class="container mx-auto user_photo_feed">
+    <div class="row justify-content-start">
+      <% if @search.blank? %>
+        <h4>There are no games containing the term <%= params[:search] %>.</h4>
+      <% else %>
+        <% @search_result.each do |result| %>
+          <div class="col-6 col-sm-4">
+            <div class="card items_card">
+              <div class="card-body">
+                  <%= image_tag(result["image"], class: "game_card_image") %>
+                <div class="text_box">
+                  <p class="card-text"><span class="item_name"><%= result["id"] %><%= result["name"] %></span></p>
+                  <%= link_to "I own this", ownedgames_path({ownedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
+                  <%= link_to "I want this",  wantedgames_path({wantedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
 
-<% if @search.blank? %>
-  <h4>There are no games containing the term <%= params[:search] %>.</h4>
-<% else %>
-  <%= @search_result.each do |result| %>
-    <div class="col-6 col-sm-4">
-      <div class="card items_card">
-        <div class="card-body">
-            <%= image_tag(result["image"]) %>
-          <div class="text_box">
-            <p class="card-text"><span class="item_name"><%= result["id"] %><%= result["name"] %></span></p>
-            <%= link_to "I own this", ownedgames_path({ownedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
-            <%= link_to "I want this",  wantedgames_path({wantedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
-
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+        <% end %>
+      <% end %>
+  </div>
+</div>

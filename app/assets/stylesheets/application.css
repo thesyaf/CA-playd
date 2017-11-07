@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   margin: 0;
+   padding: 0;
+ }
+
+ .game_card_image {
+   width: 95%;
+   margin-top: 5px;
+   border-radius: 3px;
+   display: block;
+ }
