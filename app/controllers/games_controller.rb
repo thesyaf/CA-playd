@@ -12,13 +12,14 @@ class GamesController < ApplicationController
       @search.limit(3) # max 100
       @search.resources('game')
       @search.query(params[:search])
-      @search.fields('name,image')
+      @search.fields("id,name,image")
 
       @search_result = []
 
       @search.fetch.each do |result|
-        @search_result << {"name" => result["name"], "image" => result["image"]["small_url"]}
+        @search_result << {"id" => result["id"], "name" => result["name"], "image" => result["image"]["small_url"]}
       end
+      puts "@search_result: #{@search_result.inspect}"
     else
       @games = Game.all.order("created_at DESC")
     end

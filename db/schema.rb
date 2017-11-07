@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104045934) do
+ActiveRecord::Schema.define(version: 20171106073028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20171104045934) do
     t.text "platform"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ownedgames", force: :cascade do |t|
+    t.string "game_api_id"
+    t.string "game_name"
+    t.string "game_image"
+    t.string "game_owned"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ownedgames_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -54,5 +65,18 @@ ActiveRecord::Schema.define(version: 20171104045934) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wantedgames", force: :cascade do |t|
+    t.string "game_api_id"
+    t.string "game_name"
+    t.string "game_image"
+    t.string "game_owned"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wantedgames_on_user_id"
+  end
+
+  add_foreign_key "ownedgames", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "wantedgames", "users"
 end

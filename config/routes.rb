@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :games, only: :index
+  resources :wantedgames
+  resources :ownedgames
+  resources :games
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :charges

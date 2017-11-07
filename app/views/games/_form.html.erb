@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :api_game_id %>
-    <%= form.text_area :api_game_id, id: :game_api_game_id %>
+    <%= form.text_area :api_game_id, id: :game_api_game_id, :placeholder => [params["id"]] %>
   </div>
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :game_name %>
+    <%= form.text_field :name, id: :game_name, :placeholder => [params["name"]] %>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_area :image, id: :game_image %>
+    <%= form.text_area :image, id: :game_image, :placeholder => [params["image"]] %>
   </div>
 
   <div class="field">
