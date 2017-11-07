@@ -4,22 +4,26 @@
 <div class="container mx-auto user_photo_feed">
     <div class="row justify-content-start">
       <% if @wantedgames.blank? %>
-        <h4>You haven't added any games to your Owned Collection.</h4>
+        <h4>You haven't added any games to your Wanted Collection.</h4>
       <% else %>
-        <% @wantedgames.each do |game| %>
-          <% if game.user == current_user %>
-            <div class="col-6 col-sm-4">
-              <div class="card items_card">
-                <div class="card-body">
-                    <%= image_tag(game["game_image"], class: "game_card_image") %>
-                  <div class="text_box">
-                    <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+        <h2>Looks like there are people that have a game you want</h2>
+        <!-- Only iterates over the current_user's wanted games -->
+        <% @wantedgames.where(user_id: current_user).each do |game| %>
+          <!-- Check if anyone owns the game the current_user wants -->
+          <% if @ownedgames.exists?(game_api_id: game.game_api_id) %>
+              <div class="col-6 col-sm-4">
+                <div class="card items_card">
+                  <div class="card-body">
+                      <%= image_tag(game["game_image"], class: "game_card_image") %>
+                    <div class="text_box">
+                      <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           <% end %>
         <% end %>
       <% end %>
+
   </div>
 </div>

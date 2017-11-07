@@ -10,6 +10,7 @@
       <% if @wantedgames.blank? %>
         <h4>You haven't added any games to your Wanted Collection.</h4>
       <% else %>
+        <h2>Here's your wanted list of games</h2>
         <% @wantedgames.each do |game| %>
           <% if game.user == current_user %>
 
