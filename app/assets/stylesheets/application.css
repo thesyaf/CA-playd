@@ -19,10 +19,40 @@
    padding: 0;
  }
 
+ .background {
+   width: 100%;
+   min-height: 500px;
+   position: absolute;
+   margin-top: -293px;
+   z-index: -1;
+    /* mask: */
+   background-image: -webkit-linear-gradient(#1C5F5F 50%, #000000 100%);
+   background-image: -o-linear-gradient(#1C5F5F 50%, #000000 100%);
+   background-image: linear-gradient(#1C5F5F 50%, #000000 100%);
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+   clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  }
+
+/*nav*/
  a:hover {
-  background-color: #fff !important;
+  background-color: transparent !important;
  }
 
+ .dropdown-menu {
+   background-color: transparent !important;
+ }
+
+ a {
+   color: #FFF !important;
+  }
+
+ .navbar-brand {
+   font-family: 'Tulpen One', cursive;
+   font-size: 2.5rem;
+ }
+
+
+/*game cards*/
  .game_card_image {
    width: 95%;
    margin-top: 5px;

@@ -1,22 +1,20 @@
+
 <h1>Dashboard</h1>
 
 
 <%= render "dashboard" %>
 
-<div >
-    <div>
       <div class="fourteen wide centered column">
         <h2 class="ui header">
           <i class="mail icon"></i>
-          <div class="content">
-            Simple Messaging App
-          </div>
+
         </h2>
         <div class="ui purple inverted menu">
-          <i class="home icon"></i><%= link_to "Home", root_path, class: "item" %>
+          <i class="home icon"></i>
             <% if current_user %>
               <%= link_to "Mailbox", conversations_path, class: "item" %>
 
 
             <% end %>
         </div>
+      </div>
