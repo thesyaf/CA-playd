@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ownedgame:</strong>
+  <%= @trade.ownedgame %>
+</p>
+
+<p>
+  <strong>Wantedgame:</strong>
+  <%= @trade.wantedgame %>
+</p>
+
+<%= link_to 'Edit', edit_trade_path(@trade) %> |
+<%= link_to 'Back', trades_path %>

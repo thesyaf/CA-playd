@@ -21,7 +21,6 @@
                   <p class="card-text"><span class="item_name"><%= result["id"] %><%= result["name"] %></span></p>
                   <%= link_to "I own this", ownedgames_path({ownedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
                   <%= link_to "I want this",  wantedgames_path({wantedgame: {game_api_id: result["id"], game_name: result["name"], game_image: result["image"]}}), :method => :post %>
-
                 </div>
               </div>
             </div>
