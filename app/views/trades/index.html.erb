@@ -12,10 +12,10 @@
       <% else %>
         <h2>Here are the games that you can trade to get this</h2>
         <!-- Only iterates over the owned games table for the game in the param -->
-        <% @ownedgames.where(game_api_id: params[:id]).each do |game| %>
+        <% @ownedgames.where(game_api_id: params[:gid]).each do |game| %>
           <!-- Get the owner of the game and iterate over their wanted games -->
           <% @wantedgames.where(user_id: game.user_id).each do |fortrade| %>
-            <!-- Get the owner of the game and iterate over their wanted games -->
+            <!-- Check if the game they want is in the current users owned games -->
             <% if @ownedgames.where(user_id: current_user).exists?(game_api_id: fortrade.game_api_id)%>
 
               <div class="col-6 col-sm-4">
@@ -25,6 +25,7 @@
                     <div class="text_box">
                       <p class="card-text"><span class="item_name"><%= fortrade["game_name"] %></span></p>
                       <p class="card-text"><span class="item_name"><%= fortrade["user_id"] %></span></p>
+                      <%= link_to "Offer a trade",  trades_path(trade: {ownedgame_id: params[:rid], wantedgame_id: fortrade["id"]}), :method => :post %>
 
                     </div>
                   </div>

@@ -14,7 +14,7 @@
                       <%= image_tag(game["game_image"], class: "game_card_image") %>
                     <div class="text_box">
                       <p class="card-text"><span class="item_name"><%= game["game_name"] %></span></p>
-                      <%= link_to "See trades",  trades_path({id: game["game_api_id"]}) %>
+                      <%= link_to "See trades", trades_path({gid: game["game_api_id"], rid: game["id"]}) %>
 
                     </div>
                   </div>

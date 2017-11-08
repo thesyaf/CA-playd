@@ -72,6 +72,9 @@ class TradesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trade_params
-      params.require(:trade).permit(:ownedgame_id, :wantedgame_id)
+      params.require(:trade).permit(
+        :ownedgame_id,
+        :wantedgame_id
+      )
     end
 end
