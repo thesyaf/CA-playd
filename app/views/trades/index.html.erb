@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trades</h1>
+
+
+
+
+<div class="container mx-auto user_photo_feed">
+    <div class="row justify-content-start">
+      <% if @wantedgames.where(user_id: current_user).blank? %>
+        <h4>You haven't added any games to your Wanted Collection.</h4>
+      <% else %>
+        <h2>Here are the games that you can trade to get this</h2>
+        <!-- Only iterates over the owned games table for the game in the param -->
+        <% @ownedgames.where(game_api_id: params[:id]).each do |game| %>
+          <!-- Get the owner of the game and iterate over their wanted games -->
+          <% @wantedgames.where(user_id: game.user_id).each do |fortrade| %>
+            <!-- Get the owner of the game and iterate over their wanted games -->
+            <% if @ownedgames.where(user_id: current_user).exists?(game_api_id: fortrade.game_api_id)%>
+
+              <div class="col-6 col-sm-4">
+                <div class="card items_card">
+                  <div class="card-body">
+                      <%= image_tag(fortrade["game_image"], class: "game_card_image") %>
+                    <div class="text_box">
+                      <p class="card-text"><span class="item_name"><%= fortrade["game_name"] %></span></p>
+                      <p class="card-text"><span class="item_name"><%= fortrade["user_id"] %></span></p>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      <% end %>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Ownedgame</th>
+      <th>Wantedgame</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trades.each do |trade| %>
+      <tr>
+        <td><%= trade.ownedgame %></td>
+        <td><%= trade.wantedgame %></td>
+        <td><%= link_to 'Show', trade %></td>
+        <td><%= link_to 'Edit', edit_trade_path(trade) %></td>
+        <td><%= link_to 'Destroy', trade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trade', new_trade_path %>
