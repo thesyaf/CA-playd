@@ -28,6 +28,7 @@ class TradesController < ApplicationController
   # POST /trades.json
   def create
     @trade = Trade.new(trade_params)
+    UserMailer.playd_email(current_user.email).deliver_now
 
     respond_to do |format|
       if @trade.save

@@ -22,6 +22,7 @@ class ChargesController < ApplicationController
         },
       ],
     )
+
     redirect_to root_path
 
   rescue Stripe::CardError => e

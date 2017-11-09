@@ -20,3 +20,6 @@ gbombapi: "a7594757a17028f2c5f9b50305ef84f9def2b75f"
 #Cloudinary Keys - Image hoster
 cloudinary_key: "921521829658525"
 cloudinary_secret: "haIKFeIqftSbuCM-fAAoFXJYfvc"
+
+gmail_username: "playd.noreply@gmail.com"
+gmail_pw: "syafrudin"

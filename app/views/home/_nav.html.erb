@@ -17,13 +17,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/wantedgames">Wanted</a>
       </li>
-
+      <li class="nav-item">
+        <%= link_to "Mailbox", conversations_path, class: "nav-link" %>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           More
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to "Search", games_path, class: "dropdown-item" %>
+
           <%= link_to "My Profile", profiles_path, class: "dropdown-item" %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
