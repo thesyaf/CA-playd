@@ -1,20 +1,16 @@
 
-<h1>Dashboard</h1>
+
+<% if current_user %>
+  <%= render "dashboard" %>
+<% else %>
+  <%= render "intro" %>
+<% end %>
 
 
-<%= render "dashboard" %>
-
-      <div class="fourteen wide centered column">
-        <h2 class="ui header">
-          <i class="mail icon"></i>
-
-        </h2>
         <div class="ui purple inverted menu">
           <i class="home icon"></i>
             <% if current_user %>
               <%= link_to "Mailbox", conversations_path, class: "item" %>
-
-
             <% end %>
         </div>
       </div>

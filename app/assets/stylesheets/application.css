@@ -19,7 +19,7 @@
    padding: 0;
  }
 
- .background {
+ .background, .background-home {
    width: 100%;
    min-height: 500px;
    position: absolute;
@@ -33,6 +33,16 @@
    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
   }
 
+  .background-home {
+   min-height: 100%;
+   margin: 0;
+   background-image: -webkit-linear-gradient(#1C5F5F 50%, #000000 100%);
+   background-image: -o-linear-gradient(#1C5F5F 50%, #000000 100%);
+   background-image: linear-gradient(#1C5F5F 50%, #000000 100%);
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  }
+
 /*nav*/
  a:hover {
   background-color: transparent !important;
@@ -42,7 +52,7 @@
    background-color: transparent !important;
  }
 
- a {
+ nav a {
    color: #FFF !important;
   }
 
@@ -51,6 +61,41 @@
    font-size: 2.5rem;
  }
 
+/*home page*/
+.home-brand, .home-tag, .ath-brand {
+  font-family: 'Tulpen One', cursive;
+  font-size: 15rem;
+  text-align: center;
+  color: #FFF;
+  padding-top: 50%;
+}
+
+.home-tag {
+  font-family:'Poiret One', cursive;
+  font-size: 1.5rem;
+  padding-top: 33%;
+}
+
+.path-select {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.col-3 {
+  padding: 0 0 10px 0;
+}
+
+/*sign up / log in etc*/
+.ath-brand {
+  padding-top: 30%;
+}
+
+.auth-fields {
+  text-align: center;
+  padding-top: 30%;
+  
+}
 
 /*game cards*/
  .game_card_image {
