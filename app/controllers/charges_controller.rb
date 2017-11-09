@@ -22,6 +22,8 @@ class ChargesController < ApplicationController
         },
       ],
     )
+    UserMailer.receipt(@user).deliver_now
+
     redirect_to root_path
 
   rescue Stripe::CardError => e

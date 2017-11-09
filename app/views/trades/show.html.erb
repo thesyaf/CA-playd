@@ -2,13 +2,24 @@
 
 <p>
   <strong>Ownedgame:</strong>
-  <%= @trade.ownedgame %>
+  <%= @trade.ownedgame.game_name %>
 </p>
 
 <p>
   <strong>Wantedgame:</strong>
-  <%= @trade.wantedgame %>
+  <%= @trade.wantedgame.game_name %>
 </p>
+
+<p>
+  <strong>User that wants:</strong>
+  <%= @trade.wantedgame.user.profile.username %>
+</p>
+
+<p>
+  <strong>User that owns:</strong>
+  <%= @trade.ownedgame.user.profile.username %>
+</p>
+
 
 <%= link_to 'Edit', edit_trade_path(@trade) %> |
 <%= link_to 'Back', trades_path %>
