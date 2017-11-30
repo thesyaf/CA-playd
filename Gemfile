@@ -18,6 +18,8 @@ gem 'stripe'
 gem 'figaro'
 # Game database api
 gem 'giantbomb-api', '~> 1.6.0'
+gem 'rubocop', require: false
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
