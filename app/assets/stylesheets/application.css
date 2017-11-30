@@ -17,6 +17,7 @@
  body {
    margin: 0;
    padding: 0;
+   color: #8a9fc6;
  }
 
  .background, .background-home {
@@ -53,7 +54,11 @@
  }
 
  nav a {
-   color: #FFF !important;
+   color: #CDDFF4 !important;
+  }
+
+  .nav-item .dropdown {
+    color: black !important;
   }
 
  .navbar-brand {
@@ -66,7 +71,7 @@
   font-family: 'Tulpen One', cursive;
   font-size: 15rem;
   text-align: center;
-  color: #FFF;
+  color: #FFF !important;
   padding-top: 50%;
 }
 
@@ -94,7 +99,7 @@
 .auth-fields {
   text-align: center;
   padding-top: 30%;
-  
+
 }
 
 /*game cards*/
